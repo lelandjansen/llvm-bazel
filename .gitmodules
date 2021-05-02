@@ -1,4 +1,4 @@
 [submodule "third_party/llvm-project"]
 	path = third_party/llvm-project
 	url = https://github.com/llvm/llvm-project.git
-  branch = release/12.x
+  branch = d28af7c654d8db0b68c175db5ce212d74fb5e9bc
