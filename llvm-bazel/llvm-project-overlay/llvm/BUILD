@@ -549,10 +549,6 @@ llvm_target_intrinsics_list = [
         "intrinsic_prefix": "r600",
     },
     {
-        "name": "VE",
-        "intrinsic_prefix": "ve",
-    },
-    {
         "name": "RISCV",
         "intrinsic_prefix": "riscv",
     },
@@ -713,7 +709,6 @@ cc_library(
     hdrs = [
         "include/llvm-c/BitReader.h",
         "include/llvm/Bitcode/BitcodeAnalyzer.h",
-        "include/llvm/Bitcode/BitcodeCommon.h",
         "include/llvm/Bitcode/BitcodeReader.h",
         "include/llvm/Bitcode/LLVMBitCodes.h",
     ],
@@ -883,7 +878,6 @@ cc_library(
     ]),
     hdrs = [
         "include/llvm-c/BitWriter.h",
-        "include/llvm/Bitcode/BitcodeCommon.h",
         "include/llvm/Bitcode/BitcodeWriter.h",
         "include/llvm/Bitcode/BitcodeWriterPass.h",
         "include/llvm/Bitcode/LLVMBitCodes.h",
@@ -947,13 +941,13 @@ cc_library(
 
 gentbl(
     name = "InstCombineTableGen",
-    strip_include_prefix = "lib/Target/AMDGPU",
+    strip_include_prefix = "lib/Transforms/InstCombine",
     tbl_outs = [(
         "-gen-searchable-tables",
-        "lib/Target/AMDGPU/InstCombineTables.inc",
+        "lib/Transforms/InstCombine/InstCombineTables.inc",
     )],
     tblgen = ":llvm-tblgen",
-    td_file = "lib/Target/AMDGPU/InstCombineTables.td",
+    td_file = "lib/Transforms/InstCombine/InstCombineTables.td",
     td_srcs = glob([
         "include/llvm/CodeGen/*.td",
         "include/llvm/IR/Intrinsics*.td",
